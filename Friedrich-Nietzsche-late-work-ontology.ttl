@@ -43,7 +43,7 @@ tln:lineContinuesOn a owl:ObjectProperty ;
     rdfs:domain tln:Line ;
     rdfs:range tln:Line .
 
-tln:pageIsOnTextField a a owl:ObjectProperty ;
+tln:pageIsOnTextField a owl:ObjectProperty ;
     rdfs:label "page is on text field"@en ;
     rdfs:comment "the writing that is referred to as subject can be found on object"@en ;
     rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
