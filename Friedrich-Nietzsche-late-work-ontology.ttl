@@ -1,0 +1,57 @@
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix document: <http://e-editiones.ch/ontology/document#>.
+@prefix homotypic: <http://www.nie.org/ontology/homotypic#>.
+@prefix stoff: <http://www.nie.org/ontology/standoff#>.
+@prefix text: <http://www.e-editiones.ch/ontology/text#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+@prefix tln: <http://www.nie.org/ontology/nietzsche#>.
+
+<http://www.nie.org/ontology/nietzsche>
+	a owl:Ontology;
+	dct:license <http://creativecommons.org/licenses/by/3.0/>;
+	dct:title "An ontology about the collected late works of Friedrich Nietzsche"@en;
+	dct:description """Formal description of specific concepts in the scientific study of Friedrich Nietzsches late work."""@en;
+	dct:creator "Dominique Steinbach, tool coordinator/software developer, NIE-INE/digital edition of der späte Nietzsche, Basel University, Switzerland"@en;
+	dct:contributor "Christian Steiner, software developer, digital edition of der späte Nietzsche, University of Basel, Switzerland"@en;
+   dct:publisher "Basel University, Switzerland"@en.
+
+
+tln:Page a owl:Class ;
+    rdfs:subClassOf document:Page .
+
+tln:hasImage a owl:ObjectProperty ;
+    rdfs:label "relates a page to a image"@en ;
+    rdfs:comment "relates a page to an image that has a textfield that specifies the area where the writing that constitutes the page can be found."@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:domain tln:Page ;
+    rdfs:range tln:Image .
+
+tln:inheritOverwritesWord a owl:ObjectProperty ;
+   rdfs:subPropertyOf tln:overwritesWord;
+   rdfs:label "word overwrites word (inherited from tln:wordHasCorrection)"@en ;
+   rdfs:comment "The author has used this word in order to overwrite that word."@en ;
+   rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+   owl:propertyChainAxiom  ( tln:wordHasCorrection tln:overwritesWord ).
+
+tln:lineContinuesOn a owl:ObjectProperty ;
+    rdfs:label "writing from subject line continues on object line"@en ;
+    rdfs:comment "the writing that ends on subject line continues on object line"@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:domain tln:Line ;
+    rdfs:range tln:Line .
+
+tln:pageIsOnTextField a a owl:ObjectProperty ;
+    rdfs:label "page is on text field"@en ;
+    rdfs:comment "the writing that is referred to as subject can be found on object"@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:domain tln:Page ;
+    rdfs:range tln:TextField .
+
+tln:writingContinuesWithWord a owl:ObjectProperty ;
+    rdfs:label "writing continues with next word"@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:domain tln:Word ;
+    rdfs:range tln:Word .
