@@ -29,6 +29,12 @@ tln:hasImage a owl:ObjectProperty ;
     rdfs:domain tln:Page ;
     rdfs:range tln:Image .
 
+tln:hasUrl a owl:DatatypeProperty ;
+    rdfs:label "has Url"@en ;
+    rdfs:domain tln:Image ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:range xsd:anyURI .
+
 tln:inheritOverwritesWord a owl:ObjectProperty ;
    rdfs:subPropertyOf tln:overwritesWord;
    rdfs:label "word overwrites word (inherited from tln:wordHasCorrection)"@en ;
