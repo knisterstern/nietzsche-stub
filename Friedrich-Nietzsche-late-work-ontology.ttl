@@ -5,6 +5,7 @@
 @prefix text: <http://www.e-editiones.ch/ontology/text#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 
 @prefix tln: <http://www.nie.org/ontology/nietzsche#>.
@@ -18,9 +19,87 @@
 	dct:contributor "Christian Steiner, software developer, digital edition of der späte Nietzsche, University of Basel, Switzerland"@en;
    dct:publisher "Basel University, Switzerland"@en.
 
+tln:TextGenesis a owl:Class ;
+    rdfs:label "identifies a genetic order of text versions"@en ;
+    rdfs:comment "Identifies a genetic order of text versions, i.e. groups text units as earlier and later versions of each other."@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> .
+   
+tln:IdentifiedTextVersion a owl:Class ;
+    rdfs:label "identifies a list of text unities as a text version"@en ;
+    rdfs:comment "Identification of a list of text unities (e.g. pages or parts of pages) as a text version for which there is an earlier or later version."@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> .
+
+tln:PartOfPageTextUnit a owl:Class ;
+    rdfs:label "identifies a part of a page as a text unity"@en ;
+    rdfs:comment "Identification of a part of page as a text unity."@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty tln:belongsToPage ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty tln:startLine ], 
+         [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty tln:endLine ] .
+
+tln:ExternalTextUnit a owl:Class ;
+    rdfs:label "a list text unit that has been published external to the digital edition"@en ;
+    rdfs:comment "A text unit that has been published external to the digital edition."@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:subClassOf tln:IdentifiedTextVersion .
 
 tln:Page a owl:Class ;
     rdfs:subClassOf document:Page .
+
+tln:belongsToPage a owl:ObjectProperty ;
+    rdfs:label "relates a part of a page with the page it is a part of"@en ;
+    rdfs:comment "Relates a part of a page with the page it is a part of."@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:domain tln:PartOfPageTextUnit ;
+    rdfs:range tln:Page.
+
+tln:startLine a owl:ObjectProperty ;
+    rdfs:label "relates a part of a page with the line it starts with"@en ;
+    rdfs:comment "Relates a part of a page with the line it starts with."@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:domain tln:PartOfPageTextUnit ;
+    rdfs:range tln:Line.
+
+tln:endLine a owl:ObjectProperty ;
+    rdfs:label "relates a part of a page with the line it ends with"@en ;
+    rdfs:comment "Relates a part of a page with the line it ends with."@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:domain tln:PartOfPageTextUnit ;
+    rdfs:range tln:Line.
+
+tln:identifiesAsVersion a owl:ObjectProperty ;
+    rdfs:label "groups a list of text unities together as a identified text version"@en ;
+    rdfs:comment "Groups a list of text unities together as a identified text version for which there is an ealier or later version."@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:domain tln:IdentifiedTextVersion ;
+    rdfs:range rdf:List.
+
+tln:hasGeneticOrder a owl:ObjectProperty ;
+    rdfs:label "relates a list of text versions to an identified genetic order"@en ;
+    rdfs:comment "Relates a list of text versions to an identified genetic order. The position in the list determines the version of a text unit."@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:domain tln:TextGenesis ;
+    rdfs:range rdf:List.
+
+tln:textUnitHasTitle a owl:ObjectProperty ;
+    rdfs:label "relates a external published text unit with a title"@en ;
+    rdfs:comment "Relates a external published text unit with a title by which it can be identified."@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:domain tln:ExternalTextUnit ;
+    rdfs:range xsd:string .
+
+tln:textUnitHasUrl a owl:ObjectProperty ;
+    rdfs:label "relates a external published text unit with a URL"@en ;
+    rdfs:comment "Relates a external published text unit with a URL by which it can be visited."@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:domain tln:ExternalTextUnit ;
+    rdfs:range xsd:anyURI .
 
 tln:hasImage a owl:ObjectProperty ;
     rdfs:label "relates a page to a image"@en ;
@@ -61,3 +140,4 @@ tln:writingContinuesWithWord a owl:ObjectProperty ;
     rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
     rdfs:domain tln:Word ;
     rdfs:range tln:Word .
+
