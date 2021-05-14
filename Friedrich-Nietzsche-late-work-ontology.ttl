@@ -6,6 +6,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 
 @prefix tln: <http://www.nie.org/ontology/nietzsche#>.
@@ -141,3 +142,10 @@ tln:writingContinuesWithWord a owl:ObjectProperty ;
     rdfs:domain tln:Word ;
     rdfs:range tln:Word .
 
+tln:selectableWordProperty a owl:ObjectProperty ;
+    rdfs:label "a property of a word for which it can be selected"@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:domain tln:Word .
+
+tln:wordIsDeletedByPath skos:prefLabel "Wort ist gestrichen."@de ;
+    rdfs:subPropertyOf tln:selectableWordProperty .
