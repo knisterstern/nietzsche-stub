@@ -146,6 +146,3 @@ tln:selectableWordProperty a owl:ObjectProperty ;
     rdfs:label "a property of a word for which it can be selected"@en ;
     rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
     rdfs:domain tln:Word .
-
-tln:wordIsDeletedByPath skos:prefLabel "Wort ist gestrichen."@de ;
-    rdfs:subPropertyOf tln:selectableWordProperty .
