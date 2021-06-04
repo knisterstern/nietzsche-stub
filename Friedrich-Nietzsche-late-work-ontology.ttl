@@ -146,3 +146,15 @@ tln:selectableWordProperty a owl:ObjectProperty ;
     rdfs:label "a property of a word for which it can be selected"@en ;
     rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
     rdfs:domain tln:Word .
+
+tln:cardinalityGreaterOne a rdf:Property ;
+    rdfs:label "whether a tln:selectableWordProperty can have a greater cardinality then one"@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:domain tln:selectableWordProperty ;
+    rdfs:range xsd:boolean .
+
+tln:suggestedMaxCardinality a rdf:Property ;
+    rdfs:label "the suggested max cardinaltiy of a tln:selectableWordProperty on a word"@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:domain tln:selectableWordProperty ;
+    rdfs:range xsd:nonNegativeInteger .
