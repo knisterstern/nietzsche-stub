@@ -1,5 +1,5 @@
 @prefix dct: <http://purl.org/dc/terms/>.
-@prefix document: <http://e-editiones.ch/ontology/document#>.
+@prefix document: <https://www.e-editiones.ch/ontology/document#>.
 @prefix homotypic: <http://www.nie.org/ontology/homotypic#>.
 @prefix stoff: <http://www.nie.org/ontology/standoff#>.
 @prefix text: <http://www.e-editiones.ch/ontology/text#>.
