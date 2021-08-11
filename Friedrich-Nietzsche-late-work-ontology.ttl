@@ -115,12 +115,19 @@ tln:hasUrl a owl:DatatypeProperty ;
     rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
     rdfs:range xsd:anyURI .
 
-tln:inheritOverwritesWord a owl:ObjectProperty ;
-   rdfs:subPropertyOf tln:overwritesWord;
-   rdfs:label "word overwrites word (inherited from tln:wordHasCorrection)"@en ;
-   rdfs:comment "The author has used this word in order to overwrite that word."@en ;
-   rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
-   owl:propertyChainAxiom  ( tln:wordHasCorrection tln:overwritesWord ).
+#tln:inheritOverwritesWord a owl:ObjectProperty ;
+#   rdfs:subPropertyOf tln:overwritesWord;
+#   rdfs:label "word overwrites word (inherited from tln:wordHasCorrection)"@en ;
+#   rdfs:comment "The author has used this word in order to overwrite that word."@en ;
+#   rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+#   owl:propertyChainAxiom  ( tln:wordHasCorrection tln:overwritesWord ).
+
+tln:hasStandoffMarkup4PartThatOverwritesWord a owl:ObjectProperty ;
+    rdfs:label "word has standoff markup for the part that overwrites a word"@en ;
+    rdfs:comment "word has standoff markup that highlights the part of its text that overwrites a word"@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:domain tln:Word ;
+    rdfs:range stoff:StandoffMarkup .
 
 tln:lineContinuesOn a owl:ObjectProperty ;
     rdfs:label "writing from subject line continues on object line"@en ;
