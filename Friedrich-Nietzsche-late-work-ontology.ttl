@@ -8,6 +8,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix information-carrier: <http://e-editiones.ch/ontology/information-carrier#>.
 
 @prefix tln: <http://www.nie.org/ontology/nietzsche#>.
 
@@ -20,8 +21,14 @@
 	dct:contributor "Christian Steiner, software developer, digital edition of der späte Nietzsche, University of Basel, Switzerland"@en;
    dct:publisher "Basel University, Switzerland"@en.
 
+tln:Leaf a owl:Class ;
+    rdfs:label "leaf"@en, "Blatt"@de;
+    rdfs:comment """Sheet of a writable substance, e.g. paper, parchment, treated plant leaf."""@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> .
+
 tln:TextGenesis a owl:Class ;
-    rdfs:label "identifies a genetic order of text versions"@en ;
+    rdfs:subClassOf information-carrier:Leaf ;
+    rdfs:label "identifies a genetic order of text version"@en ;
     rdfs:comment "Identifies a genetic order of text versions, i.e. groups text units as earlier and later versions of each other."@en ;
     rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> .
    
@@ -52,6 +59,20 @@ tln:ExternalTextUnit a owl:Class ;
 
 tln:Page a owl:Class ;
     rdfs:subClassOf document:Page .
+
+tln:leafHasDescription a owl:ObjectProperty ;
+    rdfs:label "relates a leaf to a manuscript description"@en ;
+    rdfs:comment "Relates a leaf to its manuscript description."@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:domain tln:Leaf ;
+    rdfs:range tln:ManuscriptDescription.
+
+tln:isDepictedBy a owl:ObjectProperty ;
+    rdfs:label "relates a leaf to a faksimile image"@en ;
+    rdfs:comment "Relates a leaf to the faksimile image that depicts it."@en ;
+    rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> ;
+    rdfs:domain tln:Leaf ;
+    rdfs:range tln:FaksimileImage.
 
 tln:belongsToPage a owl:ObjectProperty ;
     rdfs:label "relates a part of a page with the page it is a part of"@en ;
