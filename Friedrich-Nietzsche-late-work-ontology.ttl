@@ -22,12 +22,12 @@
    dct:publisher "Basel University, Switzerland"@en.
 
 tln:Leaf a owl:Class ;
+    rdfs:subClassOf information-carrier:Leaf ;
     rdfs:label "leaf"@en, "Blatt"@de;
     rdfs:comment """Sheet of a writable substance, e.g. paper, parchment, treated plant leaf."""@en ;
     rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> .
 
 tln:TextGenesis a owl:Class ;
-    rdfs:subClassOf information-carrier:Leaf ;
     rdfs:label "identifies a genetic order of text version"@en ;
     rdfs:comment "Identifies a genetic order of text versions, i.e. groups text units as earlier and later versions of each other."@en ;
     rdfs:isDefinedBy <http://www.nie.org/ontology/nietzsche> .
